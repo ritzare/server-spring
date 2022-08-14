@@ -14,7 +14,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Server {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String ipAddress;
     private String name;
@@ -22,3 +24,4 @@ public class Server {
     private String type;
     private String imageUrl;
     private Status status;
+}
