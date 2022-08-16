@@ -1,5 +1,7 @@
 package com.example.demo.service.implementation;
 
+import static java.lang.Boolean.TRUE;
+
 import com.example.demo.domain.Server;
 import com.example.demo.enumeration.Status;
 import com.example.demo.repo.ServerRepo;
@@ -10,6 +12,7 @@ import java.util.Collection;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -38,22 +41,27 @@ public class ServerServiceImpl implements ServerService {
 
     @Override
     public Collection<Server> List(int limit) {
-        return null;
+        log.info("Fetching all servers");
+        return serverRepo.findAll(PageRequest.of(0, limit)).toList();
     }
 
     @Override
     public Server get(Long id) {
-        return null;
+        log.info("Fetching server by id: {}", id);
+        return serverRepo.findById(id).get();
     }
 
     @Override
     public Server update(Server server) {
-        return null;
+        log.info("Updating server: {}", server.getName());
+        return serverRepo.save(server);
     }
 
     @Override
     public Boolean delete(Long id) {
-        return null;
+        log.info("Deleting server by id: {}", id);
+        serverRepo.deleteById(id);
+        return TRUE;
     }
 
 
