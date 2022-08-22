@@ -1,9 +1,9 @@
 
 spring:
   datasource:
-    password: letmein
+    password: Letmein1!
     url: jdbc:mysql://localhost:3306/serverdb
-    username: root
+    username: server
   jpa:
     hibernate:
       ddl-auto: create
